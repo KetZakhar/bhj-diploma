@@ -13,7 +13,13 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
+    this.element = element;
+    this.registerEvents();
 
+  if (!element) {
+        throw new Error("Ошибка! Пустой элемент");
+      }
+   
   }
 
   /**
@@ -21,19 +27,27 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-
-  }
+    this.element.onsubmit = e => {
+    e.preventDefault();
+    this.submit();
+  
+   }
+    
+   }
 
   /**
    * Преобразует данные формы в объект вида
    * {
-   *  'название поля формы 1': 'значение поля формы 1',
-   *  'название поля формы 2': 'значение поля формы 2'
+   *  "название поля формы 1": "значение поля формы 1",
+   *  "название поля формы 2": "значение поля формы 2"
    * }
    * */
   getData() {
+    const formData = new FormData(this.element);
+    return Object.fromEntries(formData.entries());
 
   }
+
 
   onSubmit(options){
 
@@ -44,6 +58,7 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
+    this.onSubmit(this.getData());
 
   }
 }

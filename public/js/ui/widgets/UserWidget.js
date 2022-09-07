@@ -12,8 +12,12 @@ class UserWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
-
+    if (!element) {
+      throw new Error("Ошибка! Пользователь не найден");
+    }
+    this.element = element;
   }
+
 
   /**
    * Получает информацию о текущем пользователе
@@ -23,6 +27,11 @@ class UserWidget {
    * авторизованного пользователя
    * */
   update(){
+    let user = User.current();
+    if (user) {
+      let name = document.getElementsByClassName("user-name");
+      name[0].textContent = user.name;
+    }
 
   }
 }
