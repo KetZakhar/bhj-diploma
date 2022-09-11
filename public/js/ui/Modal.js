@@ -29,11 +29,11 @@ class Modal {
    * */
   registerEvents() {
     
-    const closeButton = this.element.querySelectorAll('[data-dismiss="modal"]').forEach(btn => {
-      btn.onclick = e => {
-        this.onClose(e);
-    };
-  });
+    this.element.querySelectorAll('[data-dismiss="modal"]').forEach(element => {
+      element.onclick = event => {
+      this.onClose(event);
+      }
+    });
  
     }; 
    

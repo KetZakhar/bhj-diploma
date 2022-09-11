@@ -3,6 +3,7 @@
  * на сервер.
  * */
 const createRequest = (options = {}) => {
+
     const xhr = new XMLHttpRequest();
     xhr.responseType = "json"; 
 
@@ -28,31 +29,27 @@ const createRequest = (options = {}) => {
         callback(e);
       }
 
-      
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
+
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === XMLHttpRequest.DONE){
             let err = null;
             let resp = null;
-
-            if (xhr.status === 200) {
-                const r = xhr.response;
-
-                if (r && r.succsess) {
-                    resp = r;
-                } else {
-                    err = r;
-                }
-             } else {
-                err = new Error("Ошибка!");
-            }
-
-             options.callback(err, resp);
-
-            }
+      
+            if (xhr.status != 200) { 
+                alert(`Ошибка ${xhr.status}: ${xhr.statusText}`); 
+            } else { 
+                const rr = xhr.response;
+                if (rr && rr.success) {          
+                    resp = rr;
+                }else {
+                    err = rr;
+                } 
+              }
+            options.callback(err, resp)
         };
-    
+    }
 
-    xhr.open(options.method, url);
-    xhr.send(formData);
+    // xhr.open(options.method, url);
+    // xhr.send(formData);
     
 };
