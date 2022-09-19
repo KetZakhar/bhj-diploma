@@ -29,10 +29,12 @@ class Modal {
    * */
   registerEvents() {
     
-    this.element.querySelectorAll('[data-dismiss="modal"]').forEach(element => {
-      element.onclick = event => {
-      this.onClose(event);
-      }
+    const allModalButtons = Array.from(this.element.querySelectorAll('[data-dismiss="modal"]'));
+    
+    allModalButtons.forEach(element => {
+      element.addEventListener("click", e => {
+      this.onClose(e);
+      });
     });
  
     }; 

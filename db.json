@@ -41,14 +41,9 @@
       "id": "anjf8l7tby6ci"
     },
     {
-      "name": "кредит",
+      "name": "1 платеж",
       "user_id": "1kd8vr6fkl7nevpwz",
-      "id": "anhd0l7tc69ya"
-    },
-    {
-      "name": "заначка",
-      "user_id": "1kd8vr6fkl7nevpwz",
-      "id": "ani8ol7tc95gd"
+      "id": "angd4l865sxif"
     }
   ],
   "transactions": [
@@ -186,6 +181,15 @@
       "account_id": "1",
       "user_id": "1",
       "created_at": "2022-09-11T18:04:55.829Z"
+    },
+    {
+      "id": "angd4l865t2hh",
+      "type": "income",
+      "name": "1 платеж",
+      "sum": 1000,
+      "account_id": "angd4l865sxif",
+      "user_id": "1kd8vr6fkl7nevpwz",
+      "created_at": "2022-09-17T17:04:16.085Z"
     }
   ]
 }
